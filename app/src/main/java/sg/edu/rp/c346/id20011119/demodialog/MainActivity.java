@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnDemo1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
                 //Create the Dialog builder
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 myBuilder.setTitle("Congratulations");
                 myBuilder.setMessage("You have completed a Simple Dialog Box");
                 myBuilder.setCancelable(false);
-                myBuilder.setPositiveButton("Dimiss", null);
+                myBuilder.setPositiveButton("Dismiss", null);
 
                 AlertDialog myDialog = myBuilder.create();
                 myDialog.show();
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnDemo2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);
 
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 myBuilder.setCancelable(false);
 
                 //Configure the positive button
-                myBuilder.setPositiveButton("Positive", new DialogInterface.OnClickListener() {
+                myBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tvDemo2.setText("You have selected Positive");
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //Configure the 'negative' button
-                myBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+                myBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tvDemo2.setText("You have selected Negative");
@@ -109,21 +109,22 @@ public class MainActivity extends AppCompatActivity {
 
         btnDemo3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 //inflate the input.xml layout file
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View viewDialog = inflater.inflate(R.layout.input, null);
 
-                //Obtain the UI Component in the input.xml  layout
-                //It needs to be defined as "Final", so that it can be used in the onClick() method later
+                //Obtain the UI component in the input.xml  layout
+                //It needs to be defined as "final", so that it can be used in the onClick() method later
 
                 final EditText etInput = viewDialog.findViewById(R.id.editTextInput);
+
                 AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);
-                myBuilder.setView(viewDialog);
+                myBuilder.setView(viewDialog); // Set the view of the dialog
                 myBuilder.setTitle("Demo 3 - Input Dialog");
                 myBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialogInterface, int i) {
                         //Extract the text entered by the user
                         String message = etInput.getText().toString();
                         //Set the text to the textview
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnEx3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View viewDialog = inflater.inflate(R.layout.exercise3, null);
 
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         btnDemo4.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 //Create the listener to set the date
                 DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnDemo5.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
